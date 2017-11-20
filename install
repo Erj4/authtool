@@ -1,0 +1,10 @@
+#!/bin/bash
+pip install -r requirements.txt
+shopt -s nullglob
+for filename in $(dirname "$0")/*.py
+do
+	short=$(basename "$filename")
+	cp $filename /usr/local/bin/"${short%.*}"
+	chmod a+x /usr/local/bin/"${short%.*}"
+done
+echo "Don't forget to make sure /usr/local/bin/ is on your path!"
