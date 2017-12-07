@@ -21,8 +21,7 @@ def run(args):
     if args.file:
         file_name = args.file
     else:
-        file_name = "~/.authtool"
-    file_name = file_name.replace("~", os.path.expanduser("~"))
+        file_name = os.path.join(os.path.expanduser("~"),".authtool")
     if args.mode != "init" and not os.path.isfile(file_name):
         print("The file '" + file_name + "' does not exist!", file=sys.stderr)
         print("Run 'authtool init' first to create it", file=sys.stderr)
